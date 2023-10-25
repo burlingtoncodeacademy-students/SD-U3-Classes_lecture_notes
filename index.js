@@ -17,18 +17,35 @@
     }
 */
 
+//! Instantiating 
 /* 
-* Instantiating 
     - how we create an object.
 */
+class NewObject {
+    constructor() {
+        this.name;
+        this.desc;
+    }
+}
+
+let one = new NewObject();
+one.name = 'sample';
+// console.log(one);
 
 
+//! Constructor
 /* 
-* Constructor
     - Allows us to provide arguments to set values to structured keys.
     - "Constructs" our key/value pair and general shape of the object.
 */
 
+class Item {
+    constructor(name,desc,price) {
+        this.name = name;
+        this.description = desc;
+        this.price = price;
+    }
+}
 
 /*
 ? 1    2
@@ -49,29 +66,59 @@ class Item {
     5. Keyword - Refers to "this" specific object being created.
     6. The name of a key to our new object. (Item has 3 keys being constructed)
     7. The value for those keys (referenced by the parameters)
-*/
 
-
-/* 
 * keyword "new"
     - required
     - invokes our constructor within our class.
 */
 
+let itemZero = new Item();
+// console.log(itemZero);
+let itemOne = new Item('beans','canned',0.89);
+// console.log(itemOne);
+// let brokenItem = Item();
+// console.log(brokenItem);
 
+//! Factory Functions
 /* 
-*   Factory Functions
-        - A function that processes data and provides 
+        - A function that processes data and creates our object. 
 */
 
+let iType = 'tomato soup';
+let iDesc = 'canned';
+let iCost = 1.29;
 
+function processItem(item,desc,cost) {
+    return new Item(item,desc,cost);
+}
+
+let useFunction = processItem(iType,iDesc,iCost);
+// console.log(useFunction);
+
+//! Methods
 /* 
-*   Methods
         - target with dot notation
         - works similar as a function
 */
 
+class DeptInventory {
+    constructor(dept) {
+        this.department = dept;
+        this.items = []; // making a default value for this key.
+    }
 
+    addToInventory(newItem) {
+        this.items.push(newItem);
+        console.log('Item Added!');
+    }
+}
+
+let dryGoods = new DeptInventory('Dry Goods');
+let itemTwo = new Item('corn','canned',0.79);
+
+dryGoods.addToInventory(itemTwo);
+dryGoods.addToInventory(itemOne);
+// console.log(dryGoods);
 
 /* 
 ?       1           2
@@ -94,15 +141,38 @@ class Item {
     6. Targeting the newly created object and using a method within it to add to its item array.
 */
 
+//! Factory Methods
 /* 
-! Factory Methods
     - Only reachable within the class itself
         - Not available to the object after creation
     - Target it through the class
         ex: Class.factoryMethodName([parameters]);
 */
 
+class Expense {
+    static addUpchargeForProfit(wholesale) {
+        let upcharge = wholesale + (wholesale * .25);
+        return new Expense(wholesale, upcharge);
+    }
 
+    constructor(w,s) {
+        this.purchased_price = w;
+        this.sell_at = s;
+        this.sales_tax;
+    }
+
+    addTax(x) {
+        let percentage = x;
+        let saleCost = this.sell_at;
+
+        this.sales_tax = (saleCost + (saleCost * percentage)).toFixed(2);
+    }
+}
+
+let itemToSell = Expense.addUpchargeForProfit(1);
+console.log(itemToSell);
+itemToSell.addTax(.07);
+console.log(itemToSell);
 
 /* 
 ?  1              2     
@@ -122,8 +192,8 @@ let itemToSell = Expense.addUpchargeForProfit(1);
         - passing in the wholesale amount of (1) as the argument to be evaluated in the factory method.
 */
 
+//! Class Inheritance
 /* 
-! Class Inheritance
     - Properties that are passed down into each object.
         - i.e.: methods that are built within a class. These are accessible to all objects created through that class constructor.
 */
