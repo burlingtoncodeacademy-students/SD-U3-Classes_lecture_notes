@@ -16,15 +16,14 @@
         }
     }
 */
-
+//! Instantiating 
 /* 
-* Instantiating 
     - how we create an object.
 */
 
 
+//! Constructor
 /* 
-* Constructor
     - Allows us to provide arguments to set values to structured keys.
     - "Constructs" our key/value pair and general shape of the object.
 */
@@ -49,10 +48,7 @@ class Item {
     5. Keyword - Refers to "this" specific object being created.
     6. The name of a key to our new object. (Item has 3 keys being constructed)
     7. The value for those keys (referenced by the parameters)
-*/
 
-
-/* 
 * keyword "new"
     - required
     - invokes our constructor within our class.
@@ -61,12 +57,12 @@ class Item {
 
 /* 
 *   Factory Functions
-        - A function that processes data and provides 
+        - A function that processes data and invokes a class constructor. 
 */
 
 
+//! Methods
 /* 
-*   Methods
         - target with dot notation
         - works similar as a function
 */
@@ -94,8 +90,8 @@ class Item {
     6. Targeting the newly created object and using a method within it to add to its item array.
 */
 
+//! Factory Methods
 /* 
-! Factory Methods
     - Only reachable within the class itself
         - Not available to the object after creation
     - Target it through the class
@@ -122,8 +118,8 @@ let itemToSell = Expense.addUpchargeForProfit(1);
         - passing in the wholesale amount of (1) as the argument to be evaluated in the factory method.
 */
 
+//! Class Inheritance
 /* 
-! Class Inheritance
     - Properties that are passed down into each object.
         - i.e.: methods that are built within a class. These are accessible to all objects created through that class constructor.
 */
